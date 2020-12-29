@@ -33,7 +33,6 @@ class User extends Authenticatable
         'site_keywords',
         'site_description',
         'plan_id',
-
         'status_ative',
     ];
 

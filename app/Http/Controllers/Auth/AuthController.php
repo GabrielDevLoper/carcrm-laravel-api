@@ -32,6 +32,7 @@ class AuthController extends Controller
 
         $date = Carbon::now();
         $delete_account = Carbon::now();
+
         // Salvando os dados no banco de dados
         $user = User::create([
            'name' => $request->name,
@@ -43,7 +44,8 @@ class AuthController extends Controller
 
         if($user->id) {
             return response()->json([
-                'access_token' => $user->createToken('auth-api')->accessToken
+                'access_token' => $user->createToken('auth-api')->accessToken,
+                'message' => 'Cadastro realizado com sucesso'
             ], 200);
         }
     }

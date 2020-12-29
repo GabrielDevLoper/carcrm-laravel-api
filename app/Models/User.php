@@ -34,13 +34,11 @@ class User extends Authenticatable
         'site_description',
         'plan_id',
         'status_ative',
-    ];
-
-    protected $dates = [
         'next_expiration',
         'disabled_account',
         'deleted_account',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.

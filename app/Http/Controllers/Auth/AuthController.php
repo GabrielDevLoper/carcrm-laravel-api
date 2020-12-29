@@ -27,25 +27,24 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()], 200);
+            return response()->json(['errors' => $validator->errors()], 400);
         }
 
         $date = Carbon::now();
-        $delete_account = Carbon::now();
+        $deleted_account = Carbon::now();
 
         // Salvando os dados no banco de dados
         $user = User::create([
            'name' => $request->name,
            'email' => $request->email,
-           'password' => bcrypt(Hash::make($request->password)),
+           'password' => Hash::make($request->password),
             'next_expiration' => $date->addDays(7),
-            'delete_account' => $delete_account->addDays(15)
+            'deleted_account' => $deleted_account->addDays(15)
         ]);
 
         if($user->id) {
             return response()->json([
-                'access_token' => $user->createToken('auth-api')->accessToken,
-                'message' => 'Cadastro realizado com sucesso'
+                'access_token' => $user->createToken('auth-api')->accessToken
             ], 200);
         }
     }

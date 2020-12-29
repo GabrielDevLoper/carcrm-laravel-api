@@ -22,6 +22,25 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'logo',
+        'facebook',
+        'facebook_page_id',
+        'facebook_pixel',
+        'google_analytics',
+        'whatsapp',
+        'email_contact',
+        'site_title',
+        'site_keywords',
+        'site_description',
+        'plan_id',
+
+        'status_ative',
+    ];
+
+    protected $dates = [
+        'next_expiration',
+        'disabled_account',
+        'deleted_account',
     ];
 
     /**
